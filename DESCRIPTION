@@ -1,14 +1,21 @@
 Package: lab4.LiUgroupwork
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Linear Regression using QR Decomposition with Comprehensive Tutorials
 Version: 0.1.0
 Authors@R: c(
       person(given = "Chenzhi", family = "Ni", email = "pinkmannicz@gmail.com", role = c("aut", "cre")),
       person(given = "Siyuan", family = "Xu", email = "ningschue@gmail.com", role = "aut"),
       person(given = "Mohan", family = "Zhang", email = "mohzh143@student.liu.se", role = "aut")
     )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
+Description: Implements linear regression analysis using QR decomposition for enhanced
+    numerical stability and computational efficiency. Provides comprehensive
+    methods for model fitting, diagnostics, and visualization including
+    coefficient estimates, standard errors, residuals, fitted values, and
+    diagnostic plots. The package follows standard R conventions with methods
+    for print, summary, plot, coef, resid, and vcov. Includes detailed
+    vignettes with step-by-step tutorials, practical examples, and
+    comparative analyses demonstrating the advantages of QR decomposition
+    over traditional linear regression approaches.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

@@ -1,0 +1,47 @@
+## ----include=FALSE------------------------------------------------------------
+knitr::opts_chunk$set(echo = TRUE, collapse = TRUE)
+library(lab4.LiUgroupwork)
+
+## ----eval=FALSE---------------------------------------------------------------
+# # Install the package
+# # install.packages("lab4.LiUgroupwork")
+# 
+# # Load the package
+# library(lab4.LiUgroupwork)
+
+## -----------------------------------------------------------------------------
+data(iris)
+head(iris)
+
+## -----------------------------------------------------------------------------
+# Predict Petal Length using Sepal Length
+result <- linreg(Petal.Length ~ Sepal.Length, data = iris)
+
+## -----------------------------------------------------------------------------
+# Print basic results
+print(result)
+
+# View detailed summary
+summary(result)
+
+## -----------------------------------------------------------------------------
+plot(result)
+
+## -----------------------------------------------------------------------------
+# Get coefficients
+coef(result)
+
+# Get residuals
+residuals(result)
+
+# Get fitted values
+fitted(result)
+
+## -----------------------------------------------------------------------------
+data(faithful)
+
+faithful_model <- linreg(eruptions ~ waiting, data = faithful)
+
+summary(faithful_model)
+plot(faithful_model)
+

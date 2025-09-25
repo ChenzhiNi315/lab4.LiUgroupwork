@@ -1,0 +1,93 @@
+---
+title: "Line Package User Guide"
+author: "Chenzhi Ni"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Line Package User Guide}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, collapse = TRUE)
+library(lab4.LiUgroupwork)
+```
+
+# Line Package
+
+The "line" package provides a function for linear regression analysis. This vignette demonstrates how to use the package and all its implemented methods.
+
+## Installation and Loading
+
+```{r, eval=FALSE}
+# Install the package
+# install.packages("lab4.LiUgroupwork")
+
+# Load the package
+library(lab4.LiUgroupwork)
+```
+
+## Usage Examples
+
+### Loading Data
+
+We will use the built-in 'iris' dataset:
+
+```{r}
+data(iris)
+head(iris)
+```
+
+### Running Linear Regression
+
+Use the 'linreg' function for regression analysis:
+
+```{r}
+# Predict Petal Length using Sepal Length
+result <- linreg(Petal.Length ~ Sepal.Length, data = iris)
+```
+
+### Viewing Results
+
+```{r}
+# Print basic results
+print(result)
+
+# View detailed summary
+summary(result)
+```
+
+### Plotting
+
+```{r}
+plot(result)
+```
+
+### Other Methods
+
+```{r}
+# Get coefficients
+coef(result)
+
+# Get residuals
+residuals(result)
+
+# Get fitted values
+fitted(result)
+```
+
+### Another Example: faithful Dataset
+
+```{r}
+data(faithful)
+
+faithful_model <- linreg(eruptions ~ waiting, data = faithful)
+
+summary(faithful_model)
+plot(faithful_model)
+```
+
+## Conclusion
+
+This package provides comprehensive linear regression analysis capabilities, including model fitting, result summary, and visualization.

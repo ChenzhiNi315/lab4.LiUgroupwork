@@ -1,0 +1,29 @@
+{
+    "id": "6A2FE782",
+    "path": "~/lab4.LiUgroupwork/vignettes/linreg_vignette.Rmd",
+    "project_path": "vignettes/linreg_vignette.Rmd",
+    "type": "r_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1758725221180.0,
+    "source_on_save": false,
+    "relative_order": 9,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "5,11",
+        "scrollLine": "0",
+        "rmdVisualMode": "false",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "2:0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1758747017,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1758747018010,
+    "read_only": false,
+    "read_only_alternatives": []
+}

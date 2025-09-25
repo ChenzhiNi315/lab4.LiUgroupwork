@@ -5,7 +5,7 @@
 [![R-CMD-check](https://github.com/ChenzhiNi315/lab4.LiUgroupwork/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ChenzhiNi315/lab4.LiUgroupwork/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of lab4.LiUgroupwork is to ...
+The goal of lab4.LiUgroupwork is to provide an R implementation of linear regression using QR decomposition for enhanced numerical stability. It includes detailed vignettes with tutorials and comparative examples. This package was developed as an assignment for the course 732A94 Advanced R Programming at Linköping University.
 
 ## Installation
 

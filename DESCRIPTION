@@ -2,14 +2,14 @@ Package: lab4.LiUgroupwork
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Authors@R:c(
+Authors@R: c(
       person(given = "Chenzhi", family = "Ni", email = "pinkmannicz@gmail.com", role = c("aut", "cre")),
       person(given = "Siyuan", family = "Xu", email = "ningschue@gmail.com", role = "aut"),
       person(given = "Mohan", family = "Zhang", email = "mohzh143@student.liu.se", role = "aut")
     )
 Description: More about what it does (maybe more than one line).
     Continuation lines should be indented.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.3

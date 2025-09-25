@@ -1,14 +1,14 @@
 {
-    "id": "C3A69DDF",
-    "path": "~/lab4.LiUgroupwork/.Rbuildignore",
-    "project_path": ".Rbuildignore",
-    "type": "text",
+    "id": "2F3772AB",
+    "path": "~/lab4.LiUgroupwork/README.md",
+    "project_path": "README.md",
+    "type": "markdown",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1758634911798.0,
+    "created": 1758814510066.0,
     "source_on_save": false,
-    "relative_order": 3,
+    "relative_order": 9,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
@@ -16,11 +16,11 @@
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1758814521,
+    "lastKnownWriteTime": 1758814522,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1758814521,
+    "last_content_update": 1758814522,
     "read_only": false,
     "read_only_alternatives": []
 }

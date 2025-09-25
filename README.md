@@ -21,5 +21,15 @@ pak::pak("ChenzhiNi315/lab4.LiUgroupwork")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-library(lab4.LiUgroupwork)
-## basic example code
+library(linregpkg)
+
+# Fit model on iris dataset
+fit <- linreg(Petal.Length ~ Sepal.Width + Sepal.Length, data = iris)
+
+# Methods
+print(fit)
+coef(fit)
+head(pred(fit))
+head(resid(fit))
+summary(fit)
+plot(fit)

@@ -4,8 +4,7 @@
 #' @param ... unused; for S3 compatibility
 #' @return Method dispatches to class-specific implementations.
 #' @export
-pred <- function(object, ...)
-  UseMethod("pred")
+pred <- function(object, ...) UseMethod("pred")
 
 #' Print method for linreg
 #'
@@ -31,8 +30,7 @@ print.linreg <- function(x, ...) {
 #' @return A numeric vector of residuals (unnamed).
 #' @export
 #resid.linreg <- function(object, ...) unname(object$residuals)
-residuals.linreg <- function(object, ...)
-  unname(object$residuals)
+residuals.linreg <- function(object, ...) unname(object$residuals)
 
 #' Predicted/fitted values for linreg objects
 #'
@@ -40,8 +38,7 @@ residuals.linreg <- function(object, ...)
 #' @param ... unused; for S3 compatibility
 #' @return A numeric vector of fitted values (unnamed).
 #' @export
-pred.linreg <- function(object, ...)
-  unname(object$y_hat)
+pred.linreg <- function(object, ...) unname(object$y_hat)
 
 #' Coefficients for linreg
 #'

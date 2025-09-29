@@ -17,4 +17,3 @@ Method dispatches to class-specific implementations.
 \description{
 Predicted/fitted values generic
 }
-

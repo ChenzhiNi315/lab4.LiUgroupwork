@@ -4,7 +4,8 @@
 #' @param ... unused; for S3 compatibility
 #' @return Method dispatches to class-specific implementations.
 #' @export
-pred <- function(object, ...) UseMethod("pred")
+pred <- function(object, ...)
+  UseMethod("pred")
 
 #' Print method for linreg
 #'
@@ -29,8 +30,9 @@ print.linreg <- function(x, ...) {
 #' @param ... unused; for S3 compatibility
 #' @return A numeric vector of residuals (unnamed).
 #' @export
-resid.linreg <- function(object, ...) unname(object$residuals)
-
+#resid.linreg <- function(object, ...) unname(object$residuals)
+residuals.linreg <- function(object, ...)
+  unname(object$residuals)
 
 #' Predicted/fitted values for linreg objects
 #'
@@ -38,7 +40,8 @@ resid.linreg <- function(object, ...) unname(object$residuals)
 #' @param ... unused; for S3 compatibility
 #' @return A numeric vector of fitted values (unnamed).
 #' @export
-pred.linreg <- function(object, ...) unname(object$y_hat)
+pred.linreg <- function(object, ...)
+  unname(object$y_hat)
 
 #' Coefficients for linreg
 #'
@@ -58,6 +61,9 @@ coef.linreg <- function(object, ...) {
 #' @return A data.frame with columns: Estimate, Std. Error, t value, Pr(>|t|)
 #' @export
 summary.linreg <- function(object, ...) {
+  cat("Call:\n")
+  print(object$call)
+  cat("\nCoefficients:\n")
   out <- data.frame(
     Estimate = object$beta_hat,
     `Std. Error` = object$se,
@@ -65,20 +71,26 @@ summary.linreg <- function(object, ...) {
     `Pr(>|t|)` = object$p_values,
     check.names = FALSE
   )
-  cat("Residual standard error:", sqrt(object$sigma_squared),
-      "on", object$df,"degrees of freedom\n")
-  if (!is.null(object$method))
-    cat("Method:", toupper(object$method), "\n")
-
   star <- symnum(
     out$`Pr(>|t|)`,
-    corr = FALSE, na = FALSE,
+    corr = FALSE,
+    na = FALSE,
     cutpoints = c(0, .001, .01, .05, .1, 1),
     symbols = c("***", "**", "*", ".", " ")
   )
   out_print <- cbind(out, ` ` = as.character(star))
   print(out_print)
-
+  cat("---\n")
+  cat("Signif. codes:\n0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n")
+  cat(
+    "Residual standard error:",
+    sqrt(object$sigma_squared),
+    "on",
+    object$df,
+    "degrees of freedom\n"
+  )
+  if (!is.null(object$method))
+    cat("Method:", toupper(object$method), "\n")
   invisible(out)
 }
 
@@ -92,7 +104,10 @@ summary.linreg <- function(object, ...) {
 #' @export
 plot.linreg <- function(x, ...) {
   # data
-  stdres <- if (!is.null(x$rstandard)) x$rstandard else x$residuals / sqrt(x$sigma_squared)
+  stdres <- if (!is.null(x$rstandard))
+    x$rstandard
+  else
+    x$residuals / sqrt(x$sigma_squared)
   df <- data.frame(
     fitted = x$y_hat,
     resid  = x$residuals,
@@ -102,43 +117,62 @@ plot.linreg <- function(x, ...) {
 
   # the median value
   med_resid <- stats::median(df$resid, na.rm = TRUE)
-  med_sc1   <- stats::median(df$sc1,   na.rm = TRUE)
+  med_sc1   <- stats::median(df$sc1, na.rm = TRUE)
 
   # 1) Residuals vs Fitted
   p1 <- ggplot(df, aes(.data$fitted, .data$resid)) +
-    geom_point(shape = 1, size = 3.0, stroke = 1.0) +
+    geom_point(shape = 1,
+               size = 3.0,
+               stroke = 1.0) +
     geom_hline(yintercept = 0, linetype = "dashed") +         # reference line at 0
     geom_hline(yintercept = med_resid, linetype = "dotted") + # median of residuals
-    geom_smooth(se = FALSE, method = "loess", formula = y ~ x, color = "red") +
+    geom_smooth(
+      se = FALSE,
+      method = "loess",
+      formula = y ~ x,
+      color = "red"
+    ) +
     labs(
       title = "Residuals vs Fitted",
       x = "Fitted values",
-      y = "Residuals"
+      y = "Residuals",
+      caption = deparse(x$call)
     ) +
     theme_bw() +
     theme(
-      plot.title = element_text(hjust = 0.5)
+      panel.border = element_rect(color = "black", fill = NA),
+      plot.title = element_text(hjust = 0.5),
+      plot.caption = element_text(hjust = 0.5)
     )
 
   # 2) Scale–Location: √|standardized residuals|
   p2 <- ggplot(df, aes(.data$fitted, .data$sc1)) +
-    geom_point(shape = 1, size = 3.0, stroke = 1.0) +
+    geom_point(shape = 1,
+               size = 3.0,
+               stroke = 1.0) +
     geom_hline(yintercept = med_sc1, linetype = "dotted") +   # median of √|stdres|
-    geom_smooth(se = FALSE, method = "loess", formula = y ~ x, color = "red") +
+    geom_smooth(
+      se = FALSE,
+      method = "loess",
+      formula = y ~ x,
+      color = "red"
+    ) +
     labs(
       title = "Scale-Location",
       x = "Fitted values",
-      y = "sqrt|Standardized residuals|"
+      y = expression(sqrt(abs(
+        "Standardized residuals"
+      ))),
+      caption = deparse(x$call)
     ) +
     theme_bw() +
     theme(
-      plot.title = element_text(hjust = 0.5)
+      panel.border = element_rect(color = "black", fill = NA),
+      plot.title = element_text(hjust = 0.5),
+      plot.caption = element_text(hjust = 0.5)
     )
-
 
   print(p1)
   print(p2)
   invisible(x)
 }
-
-
